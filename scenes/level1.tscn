@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://bmwcmalmyh2g8"]
+[gd_scene load_steps=7 format=4 uid="uid://bmwcmalmyh2g8"]
 
-[ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level.gd" id="1_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cf7q18wtojtx1" path="res://scenes/block.tscn" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level.gd" id="1_m7ahb"]
+[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_dwgg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
-texture = ExtResource("2_yqjtg")
+texture = ExtResource("2_dwgg1")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -70,9 +69,6 @@ texture = ExtResource("2_yqjtg")
 9:3/0 = 0
 0:4/0 = 0
 1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
 5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
@@ -80,17 +76,11 @@ texture = ExtResource("2_yqjtg")
 9:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
 5:5/0 = 0
 6:5/0 = 0
 7:5/0 = 0
 8:5/0 = 0
 1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
 5:6/0 = 0
 6:6/0 = 0
 7:6/0 = 0
@@ -151,13 +141,15 @@ texture = ExtResource("2_yqjtg")
 1:15/0 = 0
 2:15/0 = 0
 3:15/0 = 0
+2:4/size_in_atlas = Vector2i(3, 3)
+2:4/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
-texture = ExtResource("2_yqjtg")
+texture = ExtResource("2_dwgg1")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -290,12 +282,12 @@ texture = ExtResource("2_yqjtg")
 sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_lnu2h")
+script = ExtResource("1_m7ahb")
 
 [node name="Level" type="TileMapLayer" parent="."]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAEAAAD//wIAAAAAAAEAAAAAAAIAAAAAAAEAAAABAAEAAAAAAAAAAAABAAIAAAAAAAEAAAACAAEAAAAGAAAAAAADAAEAAAAGAAAAAAACAAIAAAAGAAEAAAADAAIAAAAGAAEAAAAFAAEAAAAHAAAAAAAGAAEAAAAHAAAAAAAFAAIAAAAIAAAAAAAGAAIAAAAIAAAAAAAEAAIAAAAIAAAAAAD9/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAEAAAD7/wMAAAAAAAEAAAD8/wMAAAAAAAEAAAD9/wMAAAAAAAEAAAD9/wIAAAAAAAEAAAD5/wIAAAAEAAAAAAD5/wMAAAAEAAEAAAD5/wEAAAAFAAUAAAD5/wAAAAAFAAMAAAD9/wAAAAABAAMAAAABAAAAAAABAAMAAAD+/wAAAAABAAYAAAAAAAAAAAABAAYAAAA=")
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -310,6 +302,3 @@ spawn_path = NodePath("../Players")
 spawn_limit = 4
 
 [node name="Players" type="Node2D" parent="."]
-
-[node name="Block" parent="." instance=ExtResource("6_p57ef")]
-position = Vector2(49, 9)
