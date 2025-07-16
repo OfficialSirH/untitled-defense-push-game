@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://clhj282sayw66"]
+
+[ext_resource type="Script" uid="uid://cnsd5bsbxupkc" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="FontFile" uid="uid://yftk18niv8qd" path="res://fonts/PixelOperator8-Bold.ttf" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://bayldtg4hk3xy" path="res://fonts/PixelOperator8.ttf" id="2_bqqt6"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -26.5
+offset_right = 72.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bqqt6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -69.0
+offset_top = -206.0
+offset_right = 216.0
+offset_bottom = 261.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -232.5
+offset_right = 143.5
+offset_bottom = 234.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayGame" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ekxnf")
+text = "Play Game
+"
+
+[node name="HostGame" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bqqt6")
+text = "Host Game"
+
+[node name="JoinGame" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bqqt6")
+text = "Join Game"
+
+[connection signal="pressed" from="Panel/VBoxContainer/PlayGame" to="." method="_play_game"]
+[connection signal="pressed" from="Panel/VBoxContainer/HostGame" to="." method="_host_game"]
+[connection signal="pressed" from="Panel/VBoxContainer/JoinGame" to="." method="_join_game"]

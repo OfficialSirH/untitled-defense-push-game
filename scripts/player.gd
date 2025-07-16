@@ -5,6 +5,10 @@ const JUMP_VELOCITY = -200.0
 const PUSH_FORCE = 25.0
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var camera: Camera2D = $Camera2D
+
+func _ready() -> void:
+	camera.make_current()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
