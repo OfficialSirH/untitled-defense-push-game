@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://bmwcmalmyh2g8"]
 
-[ext_resource type="Script" uid="uid://btrbx2trpxw4r" path="res://scripts/game_manager.gd" id="1_iywne"]
+[ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level1.gd" id="1_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cf7q18wtojtx1" path="res://scenes/block.tscn" id="6_p57ef"]
 
@@ -156,7 +156,7 @@ texture = ExtResource("2_yqjtg")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 texture = ExtResource("2_yqjtg")
 0:0/0 = 0
 1:0/0 = 0
@@ -287,12 +287,10 @@ texture = ExtResource("2_yqjtg")
 3:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_u5sy4"]
-sources/0 = SubResource("TileSetAtlasSource_p57ef")
+sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
-[node name="Game" type="Node2D"]
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_iywne")
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_lnu2h")
 
 [node name="Level" type="TileMapLayer" parent="."]
 z_index = 1

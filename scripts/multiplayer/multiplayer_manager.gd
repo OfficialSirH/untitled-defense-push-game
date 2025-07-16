@@ -22,8 +22,6 @@ func become_host():
 	multiplayer.peer_connected.connect(_add_player_to_game)
 	multiplayer.peer_disconnected.connect(_remove_player_from_game)
 	
-	#_remove_single_player()
-	
 	if not OS.has_feature("dedicated_server"):
 		_add_player_to_game(1)
 	
