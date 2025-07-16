@@ -408,6 +408,11 @@ animations = [{
 "name": &"jump",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fjrip")
@@ -540,7 +545,7 @@ script = ExtResource("5_rtw2f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RoamingKnight"]
 position = Vector2(0, 4)
 sprite_frames = SubResource("SpriteFrames_rtw2f")
-animation = &"jump"
+animation = &"move"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoamingKnight"]
