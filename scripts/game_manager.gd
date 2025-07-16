@@ -1,18 +1,42 @@
 extends Node
 
+enum GameType {
+	SINGLEPLAYER,
+	MULTIPLAYER_HOST,
+	MULTIPLAYER_CLIENT,
+}
+
 @onready var MultiplayerManager = $"/root/MultiplayerManager"
+var _game_type = GameType.SINGLEPLAYER
 
-func _ready():
-	if OS.has_feature("dedicated_server"):
-		print("Become host pressed")
-		MultiplayerManager.become_host()
+# Signal that will be emitted by level scenes when they are loaded
+signal level_load()
 
-func become_host():
-	print("Become host pressed")
-	$"../MultiplayerHUD".hide()
-	MultiplayerManager.become_host()
+# Register our handler for scenes
+func _ready() -> void:
+	level_load.connect(handle_level_load)
+	
+func handle_level_load():
+	var current_scene = get_tree().get_current_scene()
 
-func join_host():
-	print("Join host pressed")
-	$"../MultiplayerHUD".hide()
-	MultiplayerManager.join_host()
+	match _game_type:
+		GameType.SINGLEPLAYER:
+			var players_node = current_scene.get_node("Players")
+			var player = load("res://scenes/player.tscn").instantiate()
+			players_node.add_child(player)
+		GameType.MULTIPLAYER_HOST:
+			MultiplayerManager.become_host()
+		GameType.MULTIPLAYER_CLIENT:
+			MultiplayerManager.join_host()
+
+func play_singleplayer(game: Resource) -> void:
+	get_tree().change_scene_to_packed(game)
+	_game_type = GameType.SINGLEPLAYER
+
+func host_multiplayer(game: Resource):
+	get_tree().change_scene_to_packed(game)
+	_game_type = GameType.MULTIPLAYER_HOST
+
+func join_multiplayer(game: Resource):
+	get_tree().change_scene_to_packed(game)
+	_game_type = GameType.MULTIPLAYER_CLIENT
