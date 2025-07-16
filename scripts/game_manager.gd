@@ -7,6 +7,10 @@ enum GameType {
 }
 
 @onready var MultiplayerManager = $"/root/MultiplayerManager"
+@export var score := 0:
+	set(new_score):
+		score = new_score
+
 var _game_type = GameType.SINGLEPLAYER
 
 # Signal that will be emitted by level scenes when they are loaded
