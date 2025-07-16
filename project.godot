@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="untitled-defense-push-game"
-run/main_scene="uid://bmwcmalmyh2g8"
+run/main_scene="uid://clhj282sayw66"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
+GameManager="*res://scripts/game_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 
 [input]
 

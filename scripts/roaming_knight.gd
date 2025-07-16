@@ -2,13 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const JUMP_VELOCITY = -200.0
-const PUSH_FORCE = 25.0
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var camera: Camera2D = $Camera2D
-
-func _ready() -> void:
-	camera.make_current()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -42,8 +37,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
