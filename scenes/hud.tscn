@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://caa0u485j4db0"]
+
+[ext_resource type="FontFile" uid="uid://yftk18niv8qd" path="res://fonts/PixelOperator8-Bold.ttf" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer"]
+offset = Vector2(2, 2)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 2, 2)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahhtf")
+text = "0"
+
+[node name="DeathScreen" type="Panel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="DeathScreen"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 49.0
+offset_right = 136.0
+offset_bottom = 72.0
+scale = Vector2(2.11398, 3.26324)
+theme_override_colors/font_color = Color(0.92, 0.046, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahhtf")
+text = "Game Over"
