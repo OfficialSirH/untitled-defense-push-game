@@ -44,6 +44,7 @@ animations = [{
 }]
 
 [node name="Block" type="RigidBody2D"]
+collision_mask = 3
 lock_rotation = true
 angular_damp = 100.0
 script = SubResource("GDScript_8r6n6")
