@@ -18,9 +18,6 @@ func _ready() -> void:
 	
 func handle_level_load():
 	var current_scene = get_tree().get_current_scene()
-	
-	if current_scene.name != "Game":
-		return
 
 	match _game_type:
 		GameType.SINGLEPLAYER:
