@@ -7,6 +7,8 @@ const PUSH_FORCE = 25.0
 
 @export var health := 100.0:
 	set(new_health):
+		if new_health > 100.0:
+			new_health = 100.0
 		$HealthBar/Health.size = Vector2(new_health/20.0, 5.0)
 		health = new_health
 

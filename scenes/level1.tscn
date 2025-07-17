@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bmwcmalmyh2g8"]
+[gd_scene load_steps=14 format=4 uid="uid://bmwcmalmyh2g8"]
 
 [ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level.gd" id="1_m7ahb"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_dwgg1"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://caa0u485j4db0" path="res://scenes/hud.tscn" id="5_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://cf7q18wtojtx1" path="res://scenes/block.tscn" id="6_6sh32"]
 [ext_resource type="PackedScene" uid="uid://bg8rn4565nrpn" path="res://scenes/fall_block.tscn" id="7_ejswk"]
+[ext_resource type="PackedScene" uid="uid://cnnmb5d6cp2h1" path="res://sprites/health_pot.tscn" id="8_bbk5w"]
+[ext_resource type="PackedScene" uid="uid://h0ophs5jryf5" path="res://scenes/lever.tscn" id="9_conm7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_dwgg1")
@@ -326,6 +328,7 @@ position = Vector2(-41, -27)
 position = Vector2(0, 62)
 
 [node name="HUD" parent="." instance=ExtResource("5_ru4tf")]
+visible = false
 
 [node name="Coin2" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(183, 23)
@@ -335,3 +338,9 @@ position = Vector2(8, 7)
 
 [node name="SinkingBlock" parent="." instance=ExtResource("7_ejswk")]
 position = Vector2(217, 40)
+
+[node name="HealthPot" parent="." instance=ExtResource("8_bbk5w")]
+position = Vector2(169, -40)
+
+[node name="Lever" parent="." instance=ExtResource("9_conm7")]
+position = Vector2(248, 9)

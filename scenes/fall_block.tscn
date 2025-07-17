@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg8rn4565nrpn"]
+[gd_scene load_steps=8 format=3 uid="uid://bg8rn4565nrpn"]
 
 [ext_resource type="Script" uid="uid://unak3meovatr" path="res://scripts/sinking_block.gd" id="1_tpivu"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="1_wb5dw"]
@@ -60,13 +60,9 @@ tracks/2/keys = {
 "values": [1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_tpivu"]
-resource_name = "sink"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86l2j"]
 _data = {
-&"RESET": SubResource("Animation_86l2j"),
-&"sink": SubResource("Animation_tpivu")
+&"RESET": SubResource("Animation_86l2j")
 }
 
 [node name="SinkingBlock" type="Area2D"]
