@@ -16,8 +16,6 @@ text = "0"
 
 [node name="DeathScreen" type="Panel" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="DeathScreen"]
 layout_mode = 0
