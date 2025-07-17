@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bmwcmalmyh2g8"]
+[gd_scene load_steps=12 format=4 uid="uid://bmwcmalmyh2g8"]
 
 [ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level.gd" id="1_m7ahb"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_dwgg1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6gkdxtik5pnq" path="res://scenes/killzone.tscn" id="4_dwgg1"]
 [ext_resource type="PackedScene" uid="uid://caa0u485j4db0" path="res://scenes/hud.tscn" id="5_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://cf7q18wtojtx1" path="res://scenes/block.tscn" id="6_6sh32"]
+[ext_resource type="PackedScene" uid="uid://bg8rn4565nrpn" path="res://scenes/fall_block.tscn" id="7_ejswk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_dwgg1")
@@ -302,7 +303,7 @@ script = ExtResource("1_m7ahb")
 [node name="Level" type="TileMapLayer" parent="."]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAAJAAEAAAAAAAIAAAACAAEAAAABAAIAAAACAAEAAAAGAAEAAAALAAEAAAAHAAAAAAACAAAAAAAHAAEAAAACAAEAAAAIAAAAAAACAAAAAAAJAP//AAACAAAAAAAKAP7/AAACAAAAAAAKAP//AAACAAEAAAAIAAEAAAACAAEAAAAJAAAAAAACAAEAAAALAP7/AAACAAAAAAALAP//AAACAAEAAAADAAEAAAAKAAEAAAAFAAEAAAAKAAEAAAALAAIAAAACAAAAAAALAAMAAAACAAEAAAAMAAIAAAACAAAAAAAMAAMAAAACAAEAAAAOAAEAAAACAAAAAAAOAAIAAAACAAEAAAAPAAEAAAACAAAAAAAPAAIAAAACAAEAAAANAAIAAAAHAAMAAAD8//z/AAACAAQAAAD8//7/AAADAAcAAAD8////AAADAAgAAAD8/wAAAAADAAgAAAD8/wEAAAACAAAAAAD8/wIAAAACAAEAAAD9////AAAHAAMAAAD9/wAAAAAHAAMAAAD9/wEAAAACAAAAAAD9/wIAAAACAAEAAAD+/wEAAAACAAAAAAD+/wIAAAACAAEAAAD//wEAAAACAAAAAAD//wIAAAACAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAAJAAEAAAAAAAIAAAACAAEAAAABAAIAAAACAAEAAAAGAAEAAAALAAEAAAAHAAAAAAACAAAAAAAHAAEAAAACAAEAAAAIAAAAAAACAAAAAAAJAP//AAACAAAAAAAKAP7/AAACAAAAAAAKAP//AAACAAEAAAAIAAEAAAACAAEAAAAJAAAAAAACAAEAAAALAP7/AAACAAAAAAALAP//AAACAAEAAAADAAEAAAAKAAEAAAAFAAEAAAAKAAEAAAALAAIAAAACAAAAAAALAAMAAAACAAEAAAAMAAIAAAACAAAAAAAMAAMAAAACAAEAAAAOAAEAAAACAAAAAAAOAAIAAAACAAEAAAAPAAEAAAACAAAAAAAPAAIAAAACAAEAAAD8//z/AAACAAQAAAD8//7/AAADAAcAAAD8////AAADAAgAAAD8/wAAAAADAAgAAAD8/wEAAAACAAAAAAD8/wIAAAACAAEAAAD9////AAAHAAMAAAD9/wAAAAAHAAMAAAD9/wEAAAACAAAAAAD9/wIAAAACAAEAAAD+/wEAAAACAAAAAAD+/wIAAAACAAEAAAD//wEAAAACAAAAAAD//wIAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -322,13 +323,15 @@ spawn_limit = 4
 position = Vector2(-41, -27)
 
 [node name="Killzone" parent="." instance=ExtResource("4_dwgg1")]
-position = Vector2(0, 47)
+position = Vector2(0, 62)
 
 [node name="HUD" parent="." instance=ExtResource("5_ru4tf")]
 visible = false
 
 [node name="Coin2" parent="." instance=ExtResource("3_m7ahb")]
-position = Vector2(185, 22)
 
 [node name="Block" parent="." instance=ExtResource("6_6sh32")]
 position = Vector2(8, 7)
+
+[node name="SinkingBlock" parent="." instance=ExtResource("7_ejswk")]
+position = Vector2(217, 40)
