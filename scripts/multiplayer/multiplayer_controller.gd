@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 50.0
+func SPEED(health) -> int:
+	return 200.0 - 1.5 * health
+
 const JUMP_VELOCITY = -200.0
 const PUSH_FORCE = 25.0
-
 
 var direction = 1
 var do_jump = false
@@ -14,11 +15,20 @@ var _is_on_floor = true
 		player_id = id
 		$InputSynchronizer.set_multiplayer_authority(id)
 
+@export var health := 100.0:
+	set(new_health):
+		$HealthBar/Health.size = Vector2(new_health/20.0, 5.0)
+		health = new_health
+
 func _ready():
 	if multiplayer.get_unique_id() == player_id:
 		$Camera2D.make_current()
 	else:
 		$Camera2D.enabled = false
+	while health > 0:
+		$Timer.start()
+		await $Timer.timeout
+		health = health - 4.0
 
 func _apply_animations(delta):
 	if direction > 0:
@@ -45,9 +55,9 @@ func _apply_movement_from_input(delta):
 	direction = $InputSynchronizer.input_direction
 	
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED(health)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED(health))
 
 	move_and_slide()
 	

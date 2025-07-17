@@ -326,9 +326,9 @@ position = Vector2(-41, -27)
 position = Vector2(0, 62)
 
 [node name="HUD" parent="." instance=ExtResource("5_ru4tf")]
-visible = false
 
 [node name="Coin2" parent="." instance=ExtResource("3_m7ahb")]
+position = Vector2(183, 23)
 
 [node name="Block" parent="." instance=ExtResource("6_6sh32")]
 position = Vector2(8, 7)
