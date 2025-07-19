@@ -54,6 +54,7 @@ _data = {
 }
 
 [node name="FreezePot" type="Area2D"]
+z_index = 1
 collision_mask = 2
 script = ExtResource("1_ah318")
 
