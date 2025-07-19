@@ -24,6 +24,7 @@ func _ready() -> void:
 		$Timer.start()
 		await $Timer.timeout
 		health = health - 4.0
+		print(health)
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
 			GameManager.score = 0
