@@ -1,3 +1,4 @@
+class_name MultiplayerController
 extends CharacterBody2D
 
 func SPEED(health) -> int:
