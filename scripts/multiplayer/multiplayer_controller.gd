@@ -4,7 +4,8 @@ extends CharacterBody2D
 func SPEED(health) -> int:
 	return 200.0 - 1.5 * health
 
-const JUMP_VELOCITY = -200.0
+@export var JUMP_VELOCITY = -200.0
+@export var movable = true
 const PUSH_FORCE = 25.0
 
 var direction = 1
@@ -32,6 +33,12 @@ func _ready():
 		$Timer.start()
 		await $Timer.timeout
 		health = health - 4.0
+		if health <= 0.0:
+			$"../../HUD/DeathScreen".visible = true
+			GameManager.score = 0
+			$Timer.start()
+			await $Timer.timeout
+			get_tree().reload_current_scene()
 
 func _apply_animations(delta):
 	if direction > 0:
@@ -62,7 +69,8 @@ func _apply_movement_from_input(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED(health))
 
-	move_and_slide()
+	if movable:
+		move_and_slide()
 	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)

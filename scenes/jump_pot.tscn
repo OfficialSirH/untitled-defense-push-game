@@ -1,25 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://b00i30t87et2r"]
+[gd_scene load_steps=8 format=3 uid="uid://csb6bd8p2cj3r"]
 
-[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="1_ex5kq"]
-[ext_resource type="Script" uid="uid://g5xqesv8m601" path="res://scripts/collapsable_bridge_part.gd" id="1_myy1y"]
+[ext_resource type="Script" uid="uid://c2p3kk12nkqtv" path="res://scripts/jump_pot.gd" id="1_tmari"]
+[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_t6tq4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx2y7"]
-atlas = ExtResource("1_ex5kq")
-region = Rect2(160, 16, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7trla"]
+atlas = ExtResource("2_t6tq4")
+region = Rect2(16, 128, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a0f05"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxu7d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rx2y7")
+"texture": SubResource("AtlasTexture_7trla")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_myy1y"]
-size = Vector2(16, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86l2j"]
+size = Vector2(8, 13)
 
 [sub_resource type="Animation" id="Animation_86l2j"]
 length = 2.0
@@ -53,19 +53,21 @@ _data = {
 &"RESET": SubResource("Animation_86l2j")
 }
 
-[node name="CollapsableBridgePart" type="StaticBody2D"]
-script = ExtResource("1_myy1y")
+[node name="JumpPot" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_tmari")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_a0f05")
+sprite_frames = SubResource("SpriteFrames_kxu7d")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -2.5)
-shape = SubResource("RectangleShape2D_myy1y")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+shape = SubResource("RectangleShape2D_86l2j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_86l2j")
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
