@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://6vw2gi0sjb0g"]
+[gd_scene load_steps=30 format=3 uid="uid://6vw2gi0sjb0g"]
 
 [ext_resource type="Texture2D" uid="uid://cuifexq480egp" path="res://sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bffo82su6upaj" path="res://scripts/player.gd" id="1_g2els"]
@@ -171,7 +171,44 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
 radius = 6.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2els"]
+draw_center = false
+border_width_left = 3
+border_width_top = 4
+border_width_right = 3
+border_width_bottom = 4
+border_color = Color(0.45291, 0.93, 0.3999, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhqgy"]
+draw_center = false
+border_width_left = 2
+border_width_top = 3
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.8, 0.256, 0.256, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.323955, 0.788341, 0.763721, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+draw_center = false
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.81, 0.2187, 0.65232, 1)
+border_blend = true
+
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_g2els")
 
@@ -190,7 +227,10 @@ zoom = Vector2(4, 4)
 limit_bottom = 100
 limit_smoothed = true
 
+[node name="Timer" type="Timer" parent="."]
+
 [node name="HealthBar" type="Panel" parent="."]
+z_index = 2
 offset_left = -12.0
 offset_top = -8.0
 offset_right = -12.0
@@ -209,4 +249,42 @@ offset_right = 5.0
 offset_bottom = 5.0
 color = Color(0.400167, 1, 0.39, 1)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="HealEffect" type="Panel" parent="."]
+visible = false
+z_index = 2
+offset_left = -144.0
+offset_top = -81.0
+offset_right = -104.0
+offset_bottom = -41.0
+scale = Vector2(7.19929, 4.06297)
+theme_override_styles/panel = SubResource("StyleBoxFlat_g2els")
+
+[node name="DamageEffect" type="Panel" parent="."]
+visible = false
+z_index = 1
+offset_left = -144.0
+offset_top = -81.0
+offset_right = -104.0
+offset_bottom = -41.0
+scale = Vector2(7.19903, 4.06815)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhqgy")
+
+[node name="FreezeEffect" type="Panel" parent="."]
+visible = false
+z_index = 2
+offset_left = -144.0
+offset_top = -81.0
+offset_right = -104.0
+offset_bottom = -41.0
+scale = Vector2(7.20059, 4.06226)
+theme_override_styles/panel = SubResource("StyleBoxFlat_dqkch")
+
+[node name="JumpEffect" type="Panel" parent="."]
+visible = false
+z_index = 2
+offset_left = -144.0
+offset_top = -81.0
+offset_right = -104.0
+offset_bottom = -41.0
+scale = Vector2(7.20792, 4.0569)
+theme_override_styles/panel = SubResource("StyleBoxFlat_qlg0r")

@@ -3,7 +3,9 @@ extends CharacterBody2D
 
 func SPEED(health) -> int:
 	return 200.0 - 1.5 * health
-const JUMP_VELOCITY = -200.0
+
+@export var JUMP_VELOCITY = -200.0
+@export var movable = true
 const PUSH_FORCE = 25.0
 
 @export var health := 100.0:
@@ -14,14 +16,31 @@ const PUSH_FORCE = 25.0
 		health = new_health
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var camera: Camera2D = $Camera2D
+@onready var camera = $Camera2D
+@onready var HealEffect = $HealEffect
+@onready var JumpEffect = $JumpEffect
+@onready var FreezeEffect = $FreezeEffect
 
 func _ready() -> void:
 	camera.make_current()
 	while health > 0:
-		$Timer.start()
+		$Timer.start(0.7)
 		await $Timer.timeout
+		
 		health = health - 4.0
+		$DamageEffect.visible = true
+		
+		$Timer.start(0.3)
+		await $Timer.timeout
+		
+		$DamageEffect.visible = false
+		
+		if health <= 0.0:
+			$"../../HUD/DeathScreen".visible = true
+			GameManager.score = 0
+			$Timer.start()
+			await $Timer.timeout
+			get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -51,8 +70,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED(health)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED(health))
-
-	move_and_slide()
+		
+	if movable:
+		move_and_slide()
 	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)

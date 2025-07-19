@@ -1,25 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg8rn4565nrpn"]
+[gd_scene load_steps=8 format=3 uid="uid://t8xem28p2dmi"]
 
-[ext_resource type="Script" uid="uid://unak3meovatr" path="res://scripts/sinking_block.gd" id="1_tpivu"]
-[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="1_wb5dw"]
+[ext_resource type="Script" uid="uid://lrss61o5k0dg" path="res://scripts/freeze_pot.gd" id="1_ah318"]
+[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_bnm4b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3013"]
-atlas = ExtResource("1_wb5dw")
-region = Rect2(112, 64, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah318"]
+atlas = ExtResource("2_bnm4b")
+region = Rect2(0, 128, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tpivu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxu7d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f3013")
+"texture": SubResource("AtlasTexture_ah318")
 }],
 "loop": true,
-"name": &"idle",
-"speed": 10.0
+"name": &"default",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86l2j"]
-size = Vector2(16, 16)
+size = Vector2(8, 13)
 
 [sub_resource type="Animation" id="Animation_86l2j"]
 length = 2.0
@@ -38,22 +38,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/path = NodePath("AnimatedSprite2D:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 100)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:modulate:a")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -65,15 +53,13 @@ _data = {
 &"RESET": SubResource("Animation_86l2j")
 }
 
-[node name="SinkingBlock" type="Area2D"]
+[node name="FreezePot" type="Area2D"]
 z_index = 1
 collision_mask = 2
-script = ExtResource("1_tpivu")
+script = ExtResource("1_ah318")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_tpivu")
-animation = &"idle"
-autoplay = "idle"
+sprite_frames = SubResource("SpriteFrames_kxu7d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -83,3 +69,5 @@ shape = SubResource("RectangleShape2D_86l2j")
 libraries = {
 &"": SubResource("AnimationLibrary_86l2j")
 }
+
+[node name="Timer" type="Timer" parent="."]
