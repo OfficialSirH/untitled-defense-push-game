@@ -7,7 +7,9 @@ func _physics_process(delta: float) -> void:
 		if i is CharacterBody2D and is_finished == false:
 			is_finished = true
 			i.movable = false
+			i.FreezeEffect.visible = true
 			$AnimationPlayer.play("RESET")
 			$Timer.start()
 			await $Timer.timeout
 			i.movable = true
+			i.FreezeEffect.visible = false

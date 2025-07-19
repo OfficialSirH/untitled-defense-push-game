@@ -23,6 +23,13 @@ var _is_on_floor = true
 			new_health = 100.0
 		$HealthBar/Health.size = Vector2(new_health/20.0, 5.0)
 		health = new_health
+		
+		
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var camera = $Camera2D
+@onready var HealEffect = $HealEffect
+@onready var JumpEffect = $JumpEffect
+@onready var FreezeEffect = $FreezeEffect
 
 func _ready():
 	if multiplayer.get_unique_id() == player_id:
@@ -30,9 +37,17 @@ func _ready():
 	else:
 		$Camera2D.enabled = false
 	while health > 0:
-		$Timer.start()
+		$Timer.start(0.7)
 		await $Timer.timeout
+		
 		health = health - 4.0
+		$DamageEffect.visible = true
+		
+		$Timer.start(0.3)
+		await $Timer.timeout
+		
+		$DamageEffect.visible = false
+		
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
 			GameManager.score = 0

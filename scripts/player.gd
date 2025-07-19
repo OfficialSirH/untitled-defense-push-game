@@ -16,15 +16,25 @@ const PUSH_FORCE = 25.0
 		health = new_health
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var camera: Camera2D = $Camera2D
+@onready var camera = $Camera2D
+@onready var HealEffect = $HealEffect
+@onready var JumpEffect = $JumpEffect
+@onready var FreezeEffect = $FreezeEffect
 
 func _ready() -> void:
 	camera.make_current()
 	while health > 0:
-		$Timer.start()
+		$Timer.start(0.7)
 		await $Timer.timeout
+		
 		health = health - 4.0
-		print(health)
+		$DamageEffect.visible = true
+		
+		$Timer.start(0.3)
+		await $Timer.timeout
+		
+		$DamageEffect.visible = false
+		
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
 			GameManager.score = 0
