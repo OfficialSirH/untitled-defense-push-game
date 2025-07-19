@@ -1,3 +1,4 @@
+class_name MultiplayerController
 extends CharacterBody2D
 
 const SPEED = 50.0

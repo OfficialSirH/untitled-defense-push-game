@@ -14,13 +14,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_ahhtf")
 text = "0"
 
-[node name="DeathScreen" type="Panel" parent="."]
+[node name="DeathScreen" type="Label" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="DeathScreen"]
-layout_mode = 0
 offset_left = -2.0
 offset_top = 49.0
 offset_right = 136.0
