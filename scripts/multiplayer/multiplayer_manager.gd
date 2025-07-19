@@ -6,6 +6,7 @@ const SERVER_IP = "127.0.0.1"
 var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
 var _players_spawn_node: Node
 var host_mode_enable = false
+var player_count = 0
 
 func become_host():
 	print("Starting host!")
@@ -32,8 +33,6 @@ func join_host():
 	client_peer.create_client(SERVER_IP, SERVER_PORT)
 	
 	multiplayer.multiplayer_peer = client_peer
-	
-	#_remove_single_player()
 
 func _add_player_to_game(id: int):
 	print("Player %s joined the game!" % id)
@@ -43,15 +42,11 @@ func _add_player_to_game(id: int):
 	player_to_add.name = str(id)
 	
 	_players_spawn_node.add_child(player_to_add, true)
+	player_count += 1
 	
 func _remove_player_from_game(id: int):
 	print("Player %s left the game!" % id)
 	if not _players_spawn_node.has_node(str(id)):
 		return
 	_players_spawn_node.get_node(str(id)).queue_free()
-
-#func _remove_single_player():
-	#print("Remove single player")
-	#var player_to_remove = get_tree().get_current_scene().get_node("Player")
-	#player_to_remove.queue_free()
-	#
+	player_count -= 1

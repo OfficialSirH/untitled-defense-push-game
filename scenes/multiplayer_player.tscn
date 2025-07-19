@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://b6gjprog1gpdk"]
 
-[ext_resource type="Script" uid="uid://dadhk03w5xshf" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_80evv"]
+[ext_resource type="Script" uid="uid://dadhk03w5xshf" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_2d20i"]
 [ext_resource type="Texture2D" uid="uid://cuifexq480egp" path="res://sprites/knight.png" id="2_2d20i"]
 [ext_resource type="Script" uid="uid://d3i4nmxwke25j" path="res://scripts/multiplayer/multiplayer_input.gd" id="2_k8tkd"]
 
@@ -196,7 +196,7 @@ radius = 6.0
 
 [node name="MutiplayerPlayer" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_80evv")
+script = ExtResource("1_2d20i")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_2d20i")
