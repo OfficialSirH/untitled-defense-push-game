@@ -220,3 +220,24 @@ position = Vector2(-2, 4)
 zoom = Vector2(4, 4)
 limit_bottom = 100
 limit_smoothed = true
+
+[node name="HealthBar" type="Panel" parent="."]
+offset_left = -12.0
+offset_top = -8.0
+offset_right = -12.0
+offset_bottom = -8.0
+scale = Vector2(5.0014, 0.637512)
+
+[node name="Background" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(1, 0.440833, 0.39, 1)
+
+[node name="Health" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.400167, 1, 0.39, 1)
+
+[node name="Timer" type="Timer" parent="."]

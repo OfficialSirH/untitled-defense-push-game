@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=3 uid="uid://h0ophs5jryf5"]
+
+[ext_resource type="Texture2D" uid="uid://bbdpeb2judw1w" path="res://sprites/lever1.png" id="1_8omuk"]
+[ext_resource type="Script" uid="uid://bpdw8piyoth62" path="res://scripts/lever.gd" id="1_otbdu"]
+[ext_resource type="Texture2D" uid="uid://cn6mgw3puv44f" path="res://sprites/lever2.png" id="2_otbdu"]
+[ext_resource type="Texture2D" uid="uid://ck47i3fkt1vlw" path="res://sprites/lever3.png" id="3_xqbkd"]
+[ext_resource type="Texture2D" uid="uid://0mr2vuo7fvpy" path="res://sprites/lever4.png" id="4_rmeo1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdxgt"]
+atlas = ExtResource("1_8omuk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luqjb"]
+atlas = ExtResource("2_otbdu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp7tb"]
+atlas = ExtResource("3_xqbkd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mmod"]
+atlas = ExtResource("4_rmeo1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxu7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdxgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luqjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp7tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mmod")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86l2j"]
+size = Vector2(6, 5)
+
+[node name="Lever" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_otbdu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.253367, 0.253367)
+sprite_frames = SubResource("SpriteFrames_kxu7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2.03969, 2.03969)
+shape = SubResource("RectangleShape2D_86l2j")
