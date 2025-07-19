@@ -329,11 +329,14 @@ spawn_limit = 4
 [node name="Coin" parent="Coins" instance=ExtResource("3_m7ahb")]
 position = Vector2(-41, -27)
 
+[node name="Coin2" parent="Coins" instance=ExtResource("3_m7ahb")]
+position = Vector2(233, -121)
+
 [node name="Coin3" parent="Coins" instance=ExtResource("3_m7ahb")]
 position = Vector2(616, -37)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("3_m7ahb")]
-position = Vector2(233, -121)
+[node name="Coin4" parent="Coins" instance=ExtResource("3_m7ahb")]
+position = Vector2(1016, 13)
 
 [node name="Mechanics" type="Node" parent="."]
 

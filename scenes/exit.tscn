@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=4 uid="uid://bq7hwwsjefv2h"]
 
-[ext_resource type="Script" uid="uid://c5owxfo8i3c0s" path="res://scripts/exit.gd" id="1_uyw7u"]
+[ext_resource type="Script" path="res://scripts/exit.gd" id="1_uyw7u"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="2_l5n14"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_uyw7u"]
