@@ -9,7 +9,7 @@ enum GameType {
 # Signal that will be emitted by level scenes when they are loaded
 signal level_loaded()
 
-@onready var MultiplayerManager = $"/root/MultiplayerManager"
+#@onready var MultiplayerManager = $"/root/MultiplayerManager"
 @export var score := 0:
 	set(new_score):
 		score = new_score

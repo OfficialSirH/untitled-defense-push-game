@@ -37,6 +37,6 @@ func handle_exit(name: String) -> void:
 	if GameManager.is_singleplayer() and exit_active:
 		GameManager.play_next_level(true)
 
-@rpc("any_peer")
+@rpc("call_local")
 func victory() -> void:
 	GameManager.play_next_level()

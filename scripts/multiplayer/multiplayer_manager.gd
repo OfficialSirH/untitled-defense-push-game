@@ -25,7 +25,8 @@ func become_host():
 	
 	if not OS.has_feature("dedicated_server"):
 		_add_player_to_game(1)
-	
+
+
 func join_host():
 	print("Joining host!")
 	
@@ -33,6 +34,7 @@ func join_host():
 	client_peer.create_client(SERVER_IP, SERVER_PORT)
 	
 	multiplayer.multiplayer_peer = client_peer
+
 
 func _add_player_to_game(id: int):
 	print("Player %s joined the game!" % id)
@@ -43,7 +45,8 @@ func _add_player_to_game(id: int):
 	
 	_players_spawn_node.add_child(player_to_add, true)
 	player_count += 1
-	
+
+
 func _remove_player_from_game(id: int):
 	print("Player %s left the game!" % id)
 	if not _players_spawn_node.has_node(str(id)):
