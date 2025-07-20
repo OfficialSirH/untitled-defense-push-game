@@ -30,8 +30,8 @@ var jumping = false
 			new_health = 100.0
 		$HealthBar/Health.size = Vector2(new_health/20.0, 5.0)
 		health = new_health
-		
-		
+
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var camera = $Camera2D
 @onready var HealEffect = $HealEffect
@@ -46,23 +46,23 @@ func _ready():
 	$CoyoteTimer.wait_time = coyote_frames / 60.0
 		
 	while health > 0:
-		$Timer.start(0.7)
-		await $Timer.timeout
+		$DamageTimer.start(0.7)
+		await $DamageTimer.timeout
 		
 		health = health - 4.0
 		if _is_this_player():
 			$DamageEffect.visible = true
 		
 			$Timer.start(0.3)
-			await $Timer.timeout
+			await $DamageTimer.timeout
 		
 			$DamageEffect.visible = false
 		
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
 			GameManager.score = 0
-			$Timer.start()
-			await $Timer.timeout
+			$DamageTimer.start()
+			await $DamageTimer.timeout
 			get_tree().reload_current_scene()
 
 func _apply_animations(delta):

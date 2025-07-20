@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bcrfb6fhfejdx"]
+[gd_scene load_steps=16 format=4 uid="uid://cvydor7ivjwl"]
 
 [ext_resource type="Script" uid="uid://c258nhi087rcm" path="res://scripts/level.gd" id="1_76toy"]
 [ext_resource type="PackedScene" uid="uid://caa0u485j4db0" path="res://scenes/hud.tscn" id="2_8g4ke"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bq7hwwsjefv2h" path="res://scenes/exit.tscn" id="9_o3sye"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="10_24ks5"]
 [ext_resource type="PackedScene" uid="uid://c6gkdxtik5pnq" path="res://scenes/killzone.tscn" id="11_s4es8"]
-[ext_resource type="PackedScene" uid="uid://bg8rn4565nrpn" path="res://scenes/speed_block.tscn" id="12_8g4ke"]
+[ext_resource type="PackedScene" path="res://scenes/speed_block.tscn" id="12_8g4ke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("10_24ks5")
