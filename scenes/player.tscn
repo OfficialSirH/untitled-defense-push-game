@@ -290,5 +290,6 @@ scale = Vector2(7.20792, 4.0569)
 theme_override_styles/panel = SubResource("StyleBoxFlat_qlg0r")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

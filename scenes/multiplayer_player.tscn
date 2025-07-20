@@ -280,6 +280,7 @@ color = Color(0.400167, 1, 0.39, 1)
 [node name="DamageTimer" type="Timer" parent="."]
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="HealEffect" type="Panel" parent="."]
 visible = false
@@ -320,3 +321,5 @@ offset_right = -106.0
 offset_bottom = -37.0
 scale = Vector2(7.20792, 4.0569)
 theme_override_styles/panel = SubResource("StyleBoxFlat_xk3hh")
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]

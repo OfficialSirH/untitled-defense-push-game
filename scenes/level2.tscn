@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bq7hwwsjefv2h" path="res://scenes/exit.tscn" id="9_o3sye"]
 [ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="10_24ks5"]
 [ext_resource type="PackedScene" uid="uid://c6gkdxtik5pnq" path="res://scenes/killzone.tscn" id="11_s4es8"]
-[ext_resource type="PackedScene" path="res://scenes/speed_block.tscn" id="12_8g4ke"]
+[ext_resource type="PackedScene" uid="uid://bqwsh1cy0wvl5" path="res://scenes/speed_block.tscn" id="12_8g4ke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("10_24ks5")
@@ -327,12 +327,12 @@ visible = false
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("3_56gwk")]
-position = Vector2(135, 26)
+position = Vector2(151, 26)
 
 [node name="Mechanics" type="Node" parent="."]
 
 [node name="JumpPot" parent="Mechanics" instance=ExtResource("7_g8vcy")]
-position = Vector2(72, 24)
+position = Vector2(89, 24)
 
 [node name="FreezePot" parent="Mechanics" instance=ExtResource("8_cqal4")]
 position = Vector2(100, -67)
@@ -341,20 +341,20 @@ position = Vector2(100, -67)
 position = Vector2(1287, 0)
 
 [node name="DamageMushroom" parent="Mechanics" instance=ExtResource("7_bo4dx")]
-position = Vector2(88, 24)
+position = Vector2(105, 24)
 
 [node name="DamageMushroom2" parent="Mechanics" instance=ExtResource("7_bo4dx")]
-position = Vector2(104, 24)
+position = Vector2(121, 24)
 
 [node name="DamageMushroom3" parent="Mechanics" instance=ExtResource("7_bo4dx")]
-position = Vector2(120, 24)
+position = Vector2(137, 24)
 
 [node name="Tiles" type="Node" parent="."]
 
 [node name="Level" type="TileMapLayer" parent="Tiles"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AABPAAAAAAAGAAAAAABPAAEAAAAGAAEAAABQAAAAAAAGAAAAAABQAAEAAAAGAAEAAABRAAAAAAAGAAAAAABRAAEAAAAGAAEAAABSAAAAAAAGAAAAAABSAAEAAAAGAAEAAAD+/wEAAAAGAAAAAAD//wEAAAAGAAAAAAAAAAEAAAAGAAAAAAABAAEAAAAGAAAAAAD+/wIAAAAGAAEAAAD//wIAAAAGAAEAAAAAAAIAAAAGAAEAAAABAAIAAAAGAAEAAAA=")
+tile_map_data = PackedByteArray("AABPAAAAAAAGAAAAAABPAAEAAAAGAAEAAABQAAAAAAAGAAAAAABQAAEAAAAGAAEAAABRAAAAAAAGAAAAAABRAAEAAAAGAAEAAABSAAAAAAAGAAAAAABSAAEAAAAGAAEAAAD+/wEAAAAGAAAAAAD//wEAAAAGAAAAAAAAAAEAAAAGAAAAAAABAAEAAAAGAAAAAAD+/wIAAAAGAAEAAAD//wIAAAAGAAEAAAAAAAIAAAAGAAEAAAABAAIAAAAGAAEAAAAVAAIAAAAKAAEAAAAYAAIAAAAKAAEAAAAbAAIAAAAKAAEAAAAeAAIAAAAKAAEAAAAhAAIAAAAKAAEAAAAkAAIAAAAKAAEAAAAnAAIAAAAKAAEAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 
 [node name="Background" type="TileMapLayer" parent="Tiles"]
@@ -365,9 +365,6 @@ tile_set = SubResource("TileSet_u5sy4")
 
 [node name="Killzone" parent="Tiles" instance=ExtResource("11_s4es8")]
 position = Vector2(0, 89)
-
-[node name="SinkingBlock" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(40, 40)
 
 [node name="SinkingBlock2" parent="Tiles" instance=ExtResource("12_8g4ke")]
 position = Vector2(56, 40)
@@ -393,26 +390,11 @@ position = Vector2(152, 40)
 [node name="SinkingBlock9" parent="Tiles" instance=ExtResource("12_8g4ke")]
 position = Vector2(168, 40)
 
-[node name="SinkingBlock10" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(184, 40)
-
-[node name="SinkingBlock11" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(200, 40)
-
-[node name="SinkingBlock12" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(216, 40)
-
 [node name="SinkingBlock13" parent="Tiles" instance=ExtResource("12_8g4ke")]
 position = Vector2(232, 40)
 
 [node name="SinkingBlock14" parent="Tiles" instance=ExtResource("12_8g4ke")]
 position = Vector2(248, 40)
-
-[node name="SinkingBlock15" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(264, 40)
-
-[node name="SinkingBlock16" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(280, 40)
 
 [node name="SinkingBlock17" parent="Tiles" instance=ExtResource("12_8g4ke")]
 position = Vector2(296, 40)
@@ -424,16 +406,16 @@ position = Vector2(312, 40)
 position = Vector2(328, 40)
 
 [node name="SinkingBlock20" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(344, 40)
+position = Vector2(677, 40)
 
 [node name="SinkingBlock21" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(360, 40)
+position = Vector2(693, 40)
 
 [node name="SinkingBlock22" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(376, 40)
+position = Vector2(709, 40)
 
 [node name="SinkingBlock23" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(392, 40)
+position = Vector2(725, 40)
 
 [node name="SinkingBlock24" parent="Tiles" instance=ExtResource("12_8g4ke")]
-position = Vector2(408, 40)
+position = Vector2(741, 40)

@@ -13,11 +13,7 @@ const PUSH_FORCE = 25.0
 var direction = 1
 var do_jump = false
 var _is_on_floor = true
-
-var coyote_frames = 6
 var coyote = false
-var last_floor = false
-var jumping = false
 
 @export var player_id := 1:
 	set(id):
@@ -43,7 +39,6 @@ func _ready():
 		$Camera2D.make_current()
 	else:
 		$Camera2D.enabled = false
-	$CoyoteTimer.wait_time = coyote_frames / 60.0
 		
 	while health > 0:
 		$DamageTimer.start(0.7)
@@ -72,7 +67,6 @@ func _apply_animations(delta):
 		$AnimatedSprite2D.flip_h = true
 	
 	if _is_on_floor:
-		jumping = false
 		if direction == 0:
 			$AnimatedSprite2D.play("idle")
 		else:
@@ -81,16 +75,13 @@ func _apply_animations(delta):
 		$AnimatedSprite2D.play("jump")
 	
 func _apply_movement_from_input(delta):
-	if not is_on_floor():
+	if not is_on_floor() and not coyote:
 		velocity += get_gravity() * delta
 
 	if do_jump and (is_on_floor() or coyote):
 		velocity.y = JUMP_VELOCITY
 		do_jump = false
-		jumping = true
-		
-	if !is_on_floor() and last_floor and !jumping:
-		coyote = true
+		coyote = false
 		$CoyoteTimer.start()
 
 	direction = $InputSynchronizer.input_direction
@@ -100,16 +91,17 @@ func _apply_movement_from_input(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED(health))
 
+	var was_on_floor = is_on_floor()
 	if movable:
 		move_and_slide()
-		
-	last_floor = is_on_floor()
+	if was_on_floor and not is_on_floor() and velocity.y >= 0:
+		coyote = true
+		$CoyoteTimer.start()
 	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
-
 
 func _physics_process(delta: float) -> void:
 	if multiplayer.is_server():

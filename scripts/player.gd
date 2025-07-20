@@ -26,14 +26,10 @@ const PUSH_FORCE = 25.0
 @onready var JumpEffect = $JumpEffect
 @onready var FreezeEffect = $FreezeEffect
 
-var coyote_frames = 6
 var coyote = false
-var last_floor = false
-var jumping = false
 
 func _ready() -> void:
 	camera.make_current()
-	$CoyoteTimer.wait_time = coyote_frames / 60.0
 	
 	while health > 0:
 		$DamageTimer.start(0.7)
@@ -56,16 +52,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not coyote:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote):
 		velocity.y = JUMP_VELOCITY
-		jumping = true
-
-	if !is_on_floor() and last_floor and !jumping:
-		coyote = true
+		coyote = false
 		$CoyoteTimer.start()
 
 	var direction := Input.get_axis("move_left", "move_right")
@@ -76,7 +69,6 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	
 	if is_on_floor():
-		jumping = false
 		if direction == 0:
 			animated_sprite.play("idle")
 		else:
@@ -88,11 +80,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED(health)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED(health))
-		
+	
+	var was_on_floor = is_on_floor()
 	if movable:
 		move_and_slide()
-	
-	last_floor = is_on_floor()
+	if was_on_floor and not is_on_floor() and velocity.y >= 0:
+		coyote = true
+		$CoyoteTimer.start()
 	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
