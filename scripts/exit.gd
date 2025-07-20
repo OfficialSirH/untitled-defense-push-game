@@ -34,6 +34,8 @@ func handle_exit(name: String) -> void:
 	if players_at_exit.size() == MultiplayerManager.player_count:
 		victory.rpc()
 	exit_active = players_at_exit.size() > 0
+	if GameManager.is_singleplayer() and exit_active:
+		GameManager.play_next_level(true)
 
 @rpc("any_peer")
 func victory() -> void:
