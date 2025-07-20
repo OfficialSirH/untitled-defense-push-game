@@ -32,7 +32,7 @@ var _is_on_floor = true
 @onready var FreezeEffect = $FreezeEffect
 
 func _ready():
-	if multiplayer.get_unique_id() == player_id:
+	if _is_this_player():
 		$Camera2D.make_current()
 	else:
 		$Camera2D.enabled = false
@@ -41,12 +41,13 @@ func _ready():
 		await $Timer.timeout
 		
 		health = health - 4.0
-		$DamageEffect.visible = true
+		if _is_this_player():
+			$DamageEffect.visible = true
 		
-		$Timer.start(0.3)
-		await $Timer.timeout
+			$Timer.start(0.3)
+			await $Timer.timeout
 		
-		$DamageEffect.visible = false
+			$DamageEffect.visible = false
 		
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
@@ -100,3 +101,6 @@ func _physics_process(delta: float) -> void:
 	
 	if not multiplayer.is_server() || MultiplayerManager.host_mode_enable:
 		_apply_animations(delta)
+
+func _is_this_player() -> bool:
+	return multiplayer.get_unique_id() == player_id
