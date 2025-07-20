@@ -48,7 +48,7 @@ func _ready():
 		if _is_this_player():
 			$DamageEffect.visible = true
 		
-			$Timer.start(0.3)
+			$DamageTimer.start(0.3)
 			await $DamageTimer.timeout
 		
 			$DamageEffect.visible = false
