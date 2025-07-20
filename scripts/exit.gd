@@ -26,8 +26,8 @@ func _on_body_exited(body: Node2D) -> void:
 	if !is_multiplayer_authority():
 		return
 	if body is MultiplayerController or body is Player:
-		players_at_exit.erase(body.name)
 		handle_exit(body.name)
+		players_at_exit.erase(body.name)
 
 
 func handle_exit(name: String) -> void:

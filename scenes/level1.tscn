@@ -313,6 +313,7 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_bbk5w")
 sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
 [node name="Level1" type="Node2D"]
+editor_description = "level1"
 script = ExtResource("1_m7ahb")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

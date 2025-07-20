@@ -63,9 +63,8 @@ func is_singleplayer() -> bool:
 
 
 func play_next_level(is_singleplayer := false):
-	# get the current level number from the substring excluding "level"
-	# in the name of the scene
-	var current_level := int(get_tree().root.name.substr(5))
+	var tree := get_tree().root.get_children()
+	var current_level := int(tree[tree.find_custom(func(node: Node): node.editor_description != null)].editor_description)
 	var next_level_name = "level" + str(current_level + 1)
 	var next_level = load("res://scenes/" + next_level_name + ".tscn")
 	if next_level == null:

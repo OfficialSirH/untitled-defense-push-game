@@ -226,6 +226,7 @@ shape = SubResource("CircleShape2D_fjrip")
 zoom = Vector2(4, 4)
 limit_bottom = 100
 limit_smoothed = true
+editor_draw_limits = true
 
 [node name="DamageTimer" type="Timer" parent="."]
 

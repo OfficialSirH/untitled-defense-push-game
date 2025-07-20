@@ -340,6 +340,7 @@ position = Vector2(488, 29)
 position = Vector2(712, 27)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("3_56gwk")]
+editor_description = "level2"
 position = Vector2(1016, 27)
 
 [node name="Mechanics" type="Node" parent="."]
