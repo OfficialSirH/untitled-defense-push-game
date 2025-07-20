@@ -1,8 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+@export var MAX_SPEED = 200.0:
+	set(speed):
+		print(speed)
+		MAX_SPEED = speed
+
 func SPEED(health) -> int:
-	return 200.0 - 1.5 * health
+	return MAX_SPEED - 1.5 * health
 
 @export var JUMP_VELOCITY = -200.0
 @export var movable = true
@@ -21,25 +26,32 @@ const PUSH_FORCE = 25.0
 @onready var JumpEffect = $JumpEffect
 @onready var FreezeEffect = $FreezeEffect
 
+var coyote_frames = 6
+var coyote = false
+var last_floor = false
+var jumping = false
+
 func _ready() -> void:
 	camera.make_current()
+	$CoyoteTimer.wait_time = coyote_frames / 60.0
+	
 	while health > 0:
-		$Timer.start(0.7)
-		await $Timer.timeout
+		$DamageTimer.start(0.7)
+		await $DamageTimer.timeout
 		
 		health = health - 4.0
 		$DamageEffect.visible = true
 		
-		$Timer.start(0.3)
-		await $Timer.timeout
+		$DamageTimer.start(0.3)
+		await $DamageTimer.timeout
 		
 		$DamageEffect.visible = false
 		
 		if health <= 0.0:
 			$"../../HUD/DeathScreen".visible = true
 			GameManager.score = 0
-			$Timer.start()
-			await $Timer.timeout
+			$DamageTimer.start()
+			await $DamageTimer.timeout
 			get_tree().reload_current_scene()
 
 func _physics_process(delta: float) -> void:
@@ -48,8 +60,13 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote):
 		velocity.y = JUMP_VELOCITY
+		jumping = true
+
+	if !is_on_floor() and last_floor and !jumping:
+		coyote = true
+		$CoyoteTimer.start()
 
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -59,6 +76,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	
 	if is_on_floor():
+		jumping = false
 		if direction == 0:
 			animated_sprite.play("idle")
 		else:
@@ -74,7 +92,12 @@ func _physics_process(delta: float) -> void:
 	if movable:
 		move_and_slide()
 	
+	last_floor = is_on_floor()
+	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-c.get_normal() * PUSH_FORCE)
+
+func _on_coyote_timer_timeout():
+	coyote = false

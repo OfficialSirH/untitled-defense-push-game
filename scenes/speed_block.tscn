@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg8rn4565nrpn"]
+
+[ext_resource type="Script" uid="uid://c4oeiaijl6qbk" path="res://scripts/speed_block.gd" id="1_avypk"]
+[ext_resource type="Texture2D" uid="uid://dwlohv3tah8u2" path="res://sprites/world_tileset.png" id="1_wb5dw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avypk"]
+atlas = ExtResource("1_wb5dw")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpivu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avypk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avypk"]
+size = Vector2(16, 16)
+
+[node name="SinkingBlock" type="RigidBody2D"]
+z_index = 1
+collision_mask = 2
+freeze = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_avypk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tpivu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_avypk")
